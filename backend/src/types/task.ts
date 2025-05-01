@@ -7,4 +7,4 @@ export type Task = {
 	status: Status;
 };
 
-export type TaskInput = Omit<task, "id" | "status">;
+export type TaskInput = Omit<Task, "id" | "status">;
