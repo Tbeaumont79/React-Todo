@@ -1,6 +1,6 @@
 export type Status = "pending" | "done";
 
-export type task = {
+export type Task = {
 	id: string;
 	title: string;
 	description: string;
