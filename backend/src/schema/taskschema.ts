@@ -1,11 +1,11 @@
 import { z } from "zod";
 
-export const taskInput = z.object({
+export const statusSchema = z.object({
 	title: z.string(),
 	description: z.string(),
 });
 
-export const task = z.object({
+export const taskSchema = z.object({
 	id: z.string(),
 	title: z.string(),
 	description: z.string(),
