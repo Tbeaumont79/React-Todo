@@ -1,23 +1,23 @@
 import { taskStore } from "../models/taskstore";
-import { Task, Status } from "../types/task";
+import { Task, Status, TaskInput } from "../types/task";
 
 export const taskService = {
-	getAllTasks: () => {
+	getAllTasks(): Task[] {
 		return taskStore.getAll();
 	},
-	addTask: (task: Task) => {
+	addTask(task: Task): Task {
 		return taskStore.add(task);
 	},
-	deleteTask: (id: string) => {
+	deleteTask(id: string): boolean {
 		return taskStore.delete(id);
 	},
-	updateTask: (id: string, task: Task) => {
+	updateTask(id: string, task: Task) : Task {
 		return taskStore.update(id, task);
 	},
-	updateTaskStatus: (id: string, status: Status) => {
+	updateTaskStatus(id: string, status: Status): TaskInput {
 		return taskStore.updateStatus(id, status);
 	},
-	resetTasks: () => {
+	resetTasks(): void{
 		return taskStore.reset();
 	},
 };
