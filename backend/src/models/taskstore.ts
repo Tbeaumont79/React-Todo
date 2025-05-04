@@ -1,5 +1,5 @@
 import { Task, Status } from "../types/task";
-
+import { taskInput } from "../schema/tasks";
 let tasks: Task[] = [];
 
 export const taskStore = {
@@ -17,6 +17,15 @@ export const taskStore = {
 		}
 		tasks.splice(index, 1);
 		return true;
+	},
+	update : (id: string, task: Task): Task => {
+		const index = tasks.findIndex((task) => task.id === id);
+		if (index === -1) {
+			throw new Error("Task not found");
+		}
+
+		tasks[index] = task;
+		return task;
 	},
 	updateStatus: (id: string, status: Status): Task => {
 		const task = tasks.find((task) => task.id === id);
