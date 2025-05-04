@@ -1,5 +1,5 @@
 import {
-	addTask,
+	createTask,
 	getAllTasks,
 	deleteTask,
 	updateTaskStatus,
@@ -12,7 +12,7 @@ const router = express.Router();
 
 router.get("/", getAllTasks);
 
-router.post("/", addTask);
+router.post("/", createTask);
 
 router.put("/:id", updateTask);
 

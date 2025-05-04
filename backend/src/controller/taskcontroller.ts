@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import { taskService } from "../services/taskservice";
+import { taskSchema, statusSchema } from "../schema/taskschema";
 export const getAllTasks = async (req: Request, res: Response) => {
 	try {
 		const tasks = await taskService.getAllTasks();
@@ -8,8 +9,12 @@ export const getAllTasks = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error fetching tasks" });
 	}
 };
-export const addTask = async (req: Request, res: Response) => {
+export const createTask = async (req: Request, res: Response) => {
 	try {
+		const parsed = taskSchema.safeParse(req.body);
+		if (!parsed.success) {
+			return res.status(400).json({ message: "Invalid task data" });
+		}
 		const task = await taskService.addTask(req.body);
 		res.status(201).json(task);
 	} catch (error) {
@@ -26,6 +31,10 @@ export const updateTask = async (req: Request, res: Response) => {
 };
 export const updateTaskStatus = async (req: Request, res: Response) => {
 	try {
+		const parsed = statusSchema.safeParse(req.body);
+		if (!parsed.success) {
+			return res.status(400).json({ message: "Invalid status data" });
+		}
 		const task = await taskService.updateTaskStatus(
 			req.params.id,
 			req.body.status
