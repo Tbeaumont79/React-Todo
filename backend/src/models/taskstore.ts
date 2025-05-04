@@ -1,5 +1,4 @@
 import { Task, Status } from "../types/task";
-import { taskInput } from "../schema/taskschema";
 let tasks: Task[] = [];
 
 export const taskStore = {

@@ -1,31 +1,25 @@
-import { taskStore } from "../models/taskstore";
-import { taskInput } from "../schema/taskschema";
+import {
+	addTask,
+	getAllTasks,
+	deleteTask,
+	updateTaskStatus,
+	resetTasks,
+	updateTask,
+} from "../controller/taskcontroller";
 import express from "express";
 
 const router = express.Router();
 
-router.get("/tasks", (req, res) => {
-	res.json(taskStore.getAll());
-});
+router.get("/tasks", getAllTasks);
 
-router.post("/tasks", (req, res) => {
-	const task = taskStore.add(req.body);
-	res.json(task);
-});
+router.post("/tasks", addTask);
 
-router.put("tasks/:id", (req, res) => {
-	const validateData = taskInput.safeParse(req.body);
-	if (!validateData.success) {
-		res.status(400).json(validateData.error);
-		return;
-	}
-	const task = taskStore.updateStatus(req.params.id, req.body.status);
-	res.json(task);
-});
+router.put("tasks/:id", updateTask);
 
-router.delete("/tasks/:id", (req, res) => {
-	const result = taskStore.delete(req.params.id);
-	res.json(result);
-});
+router.put("/tasks/:id/status", updateTaskStatus);
+
+router.delete("/tasks/:id", deleteTask);
+
+router.post("/tasks/reset", resetTasks);
 
 export default router;
