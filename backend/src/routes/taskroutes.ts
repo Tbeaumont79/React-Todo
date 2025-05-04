@@ -1,4 +1,5 @@
 import { taskStore } from "../models/taskstore";
+import { taskInput } from "../schema/tasks";
 import express from "express";
 
 const router = express.Router();
@@ -13,6 +14,11 @@ router.post("/tasks", (req, res) => {
 });
 
 router.put("tasks/:id", (req, res) => {
+    const validateData = taskInput.safeParse(req.body);
+    if (!validateData.success) {
+        res.status(400).json(validateData.error);
+        return;
+    }
     const task = taskStore.updateStatus(req.params.id, req.body.status);
     res.json(task);
 });
