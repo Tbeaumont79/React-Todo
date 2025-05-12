@@ -1,5 +1,11 @@
  import React from 'react';
  
- export default TaskItem = () => {
-    return 
+ const TaskItem = () => {
+    return(
+      <div>
+         <p>task 1</p>
+      </div>
+    )
  }
+
+ export default TaskItem;
