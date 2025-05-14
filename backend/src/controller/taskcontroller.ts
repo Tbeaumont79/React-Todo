@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { taskService } from "../services/taskservice";
 import { taskSchema, statusSchema } from "../schema/taskschema";
+
 export const getAllTasks = async (req: Request, res: Response) => {
 	try {
 		const tasks = await taskService.getAllTasks();
