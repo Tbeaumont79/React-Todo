@@ -20,6 +20,11 @@ export const TodoForm = ({ onSubmit }: Props) => {
 				onSubmit(data);
 				reset();
 			})}
-		></form>
+		>
+			<input {...register("title")} placeholder="Titre" />
+			{errors.title && <p>{errors.title.message}</p>}
+			<textarea {...register("description")} placeholder="Description" />
+			<button type="submit">Ajouter</button>
+		</form>
 	);
 };
