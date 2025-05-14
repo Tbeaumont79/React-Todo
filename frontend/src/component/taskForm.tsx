@@ -1,10 +1,25 @@
-import React from "react";
 import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { todoSchema, TodoInput } from "../schema/todoSchema";
 
-const taskForm = () => {
-    return (
-        <form onSubmit={}>
-            
-        </form>
-    )
-}
+type Props = {
+	onSubmit: (data: TodoInput) => void;
+};
+
+export const TodoForm = ({ onSubmit }: Props) => {
+	const {
+		register,
+		handleSubmit,
+		formState: { errors },
+		reset,
+	} = useForm<TodoInput>({ resolver: zodResolver(todoSchema) });
+
+	return (
+		<form
+			onSubmit={handleSubmit((data) => {
+				onSubmit(data);
+				reset();
+			})}
+		></form>
+	);
+};
