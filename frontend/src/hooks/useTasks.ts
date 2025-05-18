@@ -14,4 +14,15 @@ export const useTasks = () => {
 		mutationFn: (data: TodoInput) => createTask(data),
 		onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
 	});
+
+	const deleteMutation = useMutation({
+		mutationFn: (id: number) => deleteTask(id),
+		onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+	});
+
+	return {
+		...query,
+		createTask: addMutation.mutate,
+		deleteTask: deleteMutation.mutate,
+	};
 };
