@@ -6,7 +6,6 @@ export function TaskApp() {
 	const { data: tasksResponse, isLoading, createTask, deleteTask } = useTasks();
 
 	const tasks = tasksResponse?.data;
-
 	return (
 		<div>
 			<h1>Mes tâches</h1>

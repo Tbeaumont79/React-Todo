@@ -13,7 +13,6 @@ export const TodoForm = ({ onSubmit }: Props) => {
 		formState: { errors },
 		reset,
 	} = useForm<TodoInput>({ resolver: zodResolver(todoSchema) });
-
 	return (
 		<form
 			className="w-[600px] h-96 bg-gray-300 text-white flex flex-col gap-y-10 p-10 rounded-2xl"
