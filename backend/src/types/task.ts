@@ -1,10 +1,8 @@
-export type Status = "pending" | "done";
-
 export type Task = {
-	id: string;
+	id: string | number;
 	title: string;
 	description: string;
-	status: Status;
+	status: string;
 };
 
 export type TaskInput = Omit<Task, "id" | "status">;

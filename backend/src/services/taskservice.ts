@@ -1,5 +1,5 @@
 import { taskStore } from "../models/taskstore";
-import { Task, Status, TaskInput } from "../types/task";
+import { Task, TaskInput } from "../types/task";
 
 export const taskService = {
 	getAllTasks(): Task[] {
@@ -14,7 +14,7 @@ export const taskService = {
 	updateTask(id: string, task: Task) : Task {
 		return taskStore.update(id, task);
 	},
-	updateTaskStatus(id: string, status: Status): TaskInput {
+	updateTaskStatus(id: string, status: string): TaskInput {
 		return taskStore.updateStatus(id, status);
 	},
 	resetTasks(): void{

@@ -5,7 +5,6 @@ const API_URL = "/api";
 
 export const getAllTasks = async () => {
 	const data = await axios.get(API_URL);
-	console.log("here the datas are : ", data);
 	return data;
 };
 

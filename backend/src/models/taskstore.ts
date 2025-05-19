@@ -1,4 +1,4 @@
-import { Task, Status } from "../types/task";
+import { Task } from "../types/task";
 let tasks: Task[] = [];
 
 export const taskStore = {
@@ -26,7 +26,7 @@ export const taskStore = {
 		tasks[index] = task;
 		return task;
 	},
-	updateStatus: (id: string, status: Status): Task => {
+	updateStatus: (id: string, status: string): Task => {
 		const task = tasks.find((task) => task.id === id);
 		if (!task) {
 			throw new Error("Task not found");
