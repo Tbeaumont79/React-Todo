@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { taskService } from "../services/taskservice";
 import { taskSchema, statusSchema } from "../schema/taskschema";
+import { v4 as uuidv4 } from "uuid";
 
 export const getAllTasks = async (req: Request, res: Response) => {
 	try {
@@ -12,7 +13,9 @@ export const getAllTasks = async (req: Request, res: Response) => {
 };
 export const createTask = async (req: Request, res: Response) => {
 	try {
-		const parsed = taskSchema.safeParse(req.body);
+		const newTasks = { id: uuidv4(), ...req.body };
+		const parsed = taskSchema.safeParse(newTasks);
+		console.log(parsed.data);
 		if (!parsed.success) {
 			return res.status(400).json({ message: "Invalid task data" });
 		}
