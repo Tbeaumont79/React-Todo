@@ -1,7 +1,7 @@
 import axios from "axios";
 import { TodoInput } from "../schema/todoSchema";
 
-const API_URL = "http://localhost:3000/tasks";
+const API_URL = "/api";
 
 export const getAllTasks = async () => {
 	const data = await axios.get(API_URL);
