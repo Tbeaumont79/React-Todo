@@ -3,7 +3,6 @@ let tasks: Task[] = [];
 
 export const taskStore = {
 	getAll: (): Task[] => {
-		console.log("dans le task store : ", tasks);
 		return tasks;
 	},
 	add: (task: Task): Task => {

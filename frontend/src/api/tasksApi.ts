@@ -13,7 +13,7 @@ export const createTask = async (task: TodoInput) => {
 	return data;
 };
 
-export const deleteTask = async (id: number) => {
+export const deleteTask = async (id: string) => {
 	const { data } = await axios.delete(`${API_URL}/${id}`);
 	return data;
 };
