@@ -13,13 +13,16 @@ export const getAllTasks = async (req: Request, res: Response) => {
 };
 export const createTask = async (req: Request, res: Response) => {
 	try {
-		const newTasks = { id: uuidv4(), ...req.body };
+		const newTasks = {
+			id: uuidv4(),
+			status: req.body.status ? req.body.status : "En attente",
+			...req.body,
+		};
 		const parsed = taskSchema.safeParse(newTasks);
-		console.log(parsed.data);
 		if (!parsed.success) {
 			return res.status(400).json({ message: "Invalid task data" });
 		}
-		const task = await taskService.addTask(req.body);
+		const task = await taskService.addTask(newTasks);
 		res.status(201).json(task);
 	} catch (error) {
 		res.status(500).json({ message: "Error adding task" });

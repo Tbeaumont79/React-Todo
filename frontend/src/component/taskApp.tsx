@@ -15,20 +15,39 @@ export function TaskApp() {
 			) : (
 				tasks && (
 					<div>
-						<ul>
-							{console.log(tasks)}
-							{tasks.map((task: Task) => (
-								<li className="flex gap-4" key={task.id}>
-									<h2>
-										<strong>{task.title}</strong>
-									</h2>
-									<p>{task.description}</p>
-									<button onClick={() => deleteTask(Number(task.id))}>
-										delete
-									</button>
-								</li>
-							))}
-						</ul>
+						<table className="min-w-full border border-gray-300">
+							<thead>
+								<tr>
+									<th className="px-4 py-2 border-b">Titre</th>
+									<th className="px-4 py-2 border-b">Description</th>
+									<th className="px-4 py-2 border-b">Statut</th>
+									<th className="px-4 py-2 border-b">Actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{tasks.map((task: Task) => (
+									<tr key={task.id} className="text-center">
+										<td className="px-4 py-2 border-b font-bold">
+											{task.title}
+										</td>
+										<td className="px-4 py-2 border-b">{task.description}</td>
+										<td className="px-4 py-2 border-b">
+											<span className="bg-blue-500 text-white rounded-xl px-2 py-1">
+												{task.status}
+											</span>
+										</td>
+										<td className="px-4 py-2 border-b">
+											<button
+												className="bg-red-500 text-white px-3 py-1 rounded-xl hover:bg-red-600"
+												onClick={() => deleteTask(Number(task.id))}
+											>
+												Supprimer	
+											</button>
+										</td>
+									</tr>
+								))}
+							</tbody>
+						</table>
 					</div>
 				)
 			)}
