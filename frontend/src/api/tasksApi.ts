@@ -17,3 +17,8 @@ export const deleteTask = async (id: string) => {
 	const { data } = await axios.delete(`${API_URL}/${id}`);
 	return data;
 };
+
+export const updateTask = async (id: string, task: TodoInput) => {
+	const { data } = await axios.put(`${API_URL}/${id}`, task);
+	return data;
+};

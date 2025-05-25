@@ -30,7 +30,18 @@ export const createTask = async (req: Request, res: Response) => {
 };
 export const updateTask = async (req: Request, res: Response) => {
 	try {
-		const task = await taskService.updateTask(req.params.id, req.body);
+		const existingTask = taskService
+			.getAllTasks()
+			.find((t) => t.id === req.params.id);
+		if (!existingTask) {
+			return res.status(404).json({ message: "Task not found" });
+		}
+		const updatedTask = { ...existingTask, ...req.body };
+		const parsed = taskSchema.safeParse(updatedTask);
+		if (!parsed.success) {
+			return res.status(400).json({ message: "Invalid task data" });
+		}
+		const task = await taskService.updateTask(req.params.id, updatedTask);
 		res.status(200).json(task);
 	} catch (error) {
 		res.status(500).json({ message: "Error updating task" });

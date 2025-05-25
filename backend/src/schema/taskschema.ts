@@ -9,7 +9,7 @@ export const taskSchema = z.object({
 	id: z.string(),
 	title: z.string(),
 	description: z.string(),
-	status: z.enum(["En attente", "En cours", "Fait"]).default("En attente"),
+	status: z.enum(["in progress", "todo", "done"]).default("todo"),
 	createdAt: z.string().default(() => new Date().toISOString()),
 	updatedAt: z.string().default(() => new Date().toISOString()),
 });

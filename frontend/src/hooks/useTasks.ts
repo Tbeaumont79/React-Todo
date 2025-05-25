@@ -1,5 +1,10 @@
 import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
-import { getAllTasks, createTask, deleteTask } from "../api/tasksApi";
+import {
+	getAllTasks,
+	createTask,
+	deleteTask,
+	updateTask,
+} from "../api/tasksApi";
 import { TodoInput } from "../schema/todoSchema";
 
 export const useTasks = () => {
@@ -20,9 +25,16 @@ export const useTasks = () => {
 		onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
 	});
 
+	const updateMutation = useMutation({
+		mutationFn: ({ id, data }: { id: string; data: TodoInput }) =>
+			updateTask(id, data),
+		onSuccess: () => queryClient.invalidateQueries({ queryKey: ["tasks"] }),
+	});
+
 	return {
 		...query,
 		createTask: addMutation.mutate,
 		deleteTask: deleteMutation.mutate,
+		updateTask: updateMutation.mutate,
 	};
 };

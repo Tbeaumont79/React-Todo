@@ -1,10 +1,12 @@
 import Task from "../types/Task";
-import { useTasks } from "../hooks/useTasks";
 
-export function TaskList() {
-	const { data: tasksResponse, deleteTask } = useTasks();
+type Props = {
+	tasks: Task[];
+	onEdit: (task: Task) => void;
+	deleteTask: (id: string) => void;
+};
 
-	const tasks = tasksResponse && tasksResponse.data;
+export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 	return (
 		<div>
 			<table className="min-w-full border border-gray-300">
@@ -26,10 +28,18 @@ export function TaskList() {
 									{task.status}
 								</span>
 							</td>
-							<td className="px-4 py-2 border-b">
+							<td className="px-4 py-2 border-b flex gap-2 justify-center">
+								<button
+									className="bg-orange-500 text-white px-3 py-1 rounded-xl hover:bg-orange-600"
+									onClick={() => onEdit(task)}
+								>
+									Éditer
+								</button>
 								<button
 									className="bg-red-500 text-white px-3 py-1 rounded-xl hover:bg-red-600"
-									onClick={() => deleteTask(String(task.id))}
+									onClick={() => {
+										deleteTask(task.id);
+									}}
 								>
 									Supprimer
 								</button>

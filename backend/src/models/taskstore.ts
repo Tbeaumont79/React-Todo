@@ -22,7 +22,6 @@ export const taskStore = {
 		if (index === -1) {
 			throw new Error("Task not found");
 		}
-
 		tasks[index] = task;
 		return task;
 	},
