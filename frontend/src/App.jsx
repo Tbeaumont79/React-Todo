@@ -8,7 +8,7 @@ function App() {
 	return (
 		<QueryClientProvider
 			client={queryClient}
-			className="bg-teal-950 h-screen w-full flex justify-center items-center"
+			className="bg-teal-950 h-screen m-w-[300px] flex justify-center items-center"
 		>
 			<TaskApp />
 		</QueryClientProvider>

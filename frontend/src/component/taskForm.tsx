@@ -27,7 +27,7 @@ export const TodoForm = ({
 
 	return (
 		<form
-			className="w-[600px] h-96 bg-gray-300 text-white flex flex-col gap-y-10 p-10 rounded-2xl"
+			className="bg-gray-300 text-white flex flex-col justify-center items-center gap-y-10 p-10 rounded-2xl"
 			onSubmit={handleSubmit((data) => {
 				onSubmit(data);
 				reset();
@@ -46,7 +46,7 @@ export const TodoForm = ({
 			<textarea
 				{...register("description")}
 				placeholder="Description"
-				className="h-96 min-h-10 placeholder-white bg-gray-800 rounded-2xl py-2 px-5 shadow-xs shadow-gray-950 resize-none"
+				className="min-h-10 placeholder-white bg-gray-800 rounded-2xl py-2 px-5 shadow-xs shadow-gray-950 resize-none"
 			/>
 			{errors.status && (
 				<p className="text-red-600 bg-red-300 p-2 rounded-2xl">

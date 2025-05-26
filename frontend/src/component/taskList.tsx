@@ -8,8 +8,8 @@ type Props = {
 
 export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 	return (
-		<div>
-			<table className="min-w-full border border-gray-300">
+		<div className="w-[300px] overflow-auto h-full flex justify-center items-center mt-10 md:w-full lg:w-full">
+			<table className="border border-gray-300">
 				<thead>
 					<tr>
 						<th className="px-4 py-2 border-b">Titre</th>

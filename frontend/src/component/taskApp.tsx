@@ -18,8 +18,10 @@ export function TaskApp() {
 
 	const handleEdit = (task: Task) => setEditingTask(task);
 	const handleUpdate = (data: {
-		status: string; title: string; description?: string 
-}) => {
+		status: string;
+		title: string;
+		description?: string;
+	}) => {
 		if (editingTask) {
 			updateTask({
 				id: String(editingTask.id),
@@ -33,7 +35,7 @@ export function TaskApp() {
 		}
 	};
 	return (
-		<div className="h-full w-full flex flex-col justify-center items-center gap-y-10">
+		<div className="h-full w-full flex flex-col justify-center items-center">
 			<h1 className="text-3xl pt-5">Mes tâches</h1>
 			{editingTask ? (
 				<TodoForm
