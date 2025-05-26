@@ -12,18 +12,22 @@ export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 			<table className="border border-gray-300">
 				<thead>
 					<tr>
-						<th className="px-4 py-2 border-b">Titre</th>
-						<th className="px-4 py-2 border-b">Description</th>
-						<th className="px-4 py-2 border-b">Statut</th>
-						<th className="px-4 py-2 border-b">Actions</th>
+						<th className="px-4 py-2 border-b text-white">Titre</th>
+						<th className="px-4 py-2 border-b text-white">Description</th>
+						<th className="px-4 py-2 border-b text-white">Statut</th>
+						<th className="px-4 py-2 border-b text-white">Actions</th>
 					</tr>
 				</thead>
 				<tbody>
 					{tasks.map((task: Task) => (
 						<tr key={task.id} className="text-center">
-							<td className="px-4 py-2 border-b font-bold">{task.title}</td>
-							<td className="px-4 py-2 border-b">{task.description}</td>
-							<td className="px-4 py-2 border-b">
+							<td className="px-4 py-2 border-b font-bold text-white">
+								{task.title}
+							</td>
+							<td className="px-4 py-2 border-b text-white">
+								{task.description}
+							</td>
+							<td className="px-4 py-2 border-b text-white">
 								<span className="bg-blue-500 text-white rounded-xl px-2 py-1">
 									{task.status}
 								</span>
@@ -40,6 +44,7 @@ export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 									onClick={() => {
 										deleteTask(task.id);
 									}}
+									text-white
 								>
 									Supprimer
 								</button>

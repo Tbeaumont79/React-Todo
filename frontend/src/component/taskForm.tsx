@@ -27,7 +27,7 @@ export const TodoForm = ({
 
 	return (
 		<form
-			className="bg-gray-300 text-white flex flex-col justify-center items-center gap-y-10 p-10 rounded-2xl"
+			className=" bg-info-content text-white flex flex-col justify-center items-center gap-y-10 mt-10 p-5 rounded-2xl md:w-[500px] lg:w-[500px]"
 			onSubmit={handleSubmit((data) => {
 				onSubmit(data);
 				reset();
@@ -41,12 +41,12 @@ export const TodoForm = ({
 			<input
 				{...register("title")}
 				placeholder="Titre"
-				className="placeholder-white bg-gray-800 rounded-2xl py-3 px-5 shadow-xs shadow-gray-950"
+				className="placeholder-white w-full bg-base-200 rounded-2xl py-3 px-5 shadow-xs shadow-gray-950"
 			/>
 			<textarea
 				{...register("description")}
 				placeholder="Description"
-				className="min-h-10 placeholder-white bg-gray-800 rounded-2xl py-2 px-5 shadow-xs shadow-gray-950 resize-none"
+				className="min-h-10 w-full placeholder-white bg-base-200 rounded-2xl py-2 px-5 shadow-xs shadow-gray-950 resize-none"
 			/>
 			{errors.status && (
 				<p className="text-red-600 bg-red-300 p-2 rounded-2xl">
@@ -55,7 +55,7 @@ export const TodoForm = ({
 			)}
 			<select
 				{...register("status")}
-				className="bg-gray-800 rounded-2xl py-3 px-5 shadow-xs shadow-gray-950 text-white"
+				className="bg-base-200 rounded-2xl w-full py-5 px-2 shadow-xs shadow-gray-950 text-white"
 			>
 				<option value="">Sélectionner un statut</option>
 				<option value="todo">À faire</option>
@@ -64,7 +64,7 @@ export const TodoForm = ({
 			</select>
 			<button
 				type="submit"
-				className="bg-orange-600 py-3 px-10 rounded-xl w-40 hover:bg-orange-400 shadow-xs shadow-amber-900"
+				className="bg-orange-600 py-3 px-10 rounded-xl w-full hover:bg-orange-400 shadow-xs shadow-amber-900"
 			>
 				{buttonLabel}
 			</button>
