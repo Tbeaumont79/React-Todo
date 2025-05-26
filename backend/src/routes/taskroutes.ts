@@ -5,7 +5,7 @@ import {
 	updateTaskStatus,
 	resetTasks,
 	updateTask,
-} from "../controller/taskcontroller";
+} from "../controller/taskController";
 import express from "express";
 
 const router = express.Router();
