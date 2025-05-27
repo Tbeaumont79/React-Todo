@@ -3,6 +3,7 @@ import { TaskList } from "./taskList";
 import { useTasks } from "../hooks/useTasks";
 import Task from "../types/Task";
 import { useState } from "react";
+import { TodoInput } from "../schema/todoSchema";
 
 export function TaskApp() {
 	const {
@@ -11,20 +12,19 @@ export function TaskApp() {
 		createTask,
 		deleteTask,
 		updateTask,
+		isError,
+		error,
 	} = useTasks();
 
 	const [editingTask, setEditingTask] = useState<Task | null>(null);
 	const tasks = tasksResponse?.data || [];
 
 	const handleEdit = (task: Task) => setEditingTask(task);
-	const handleUpdate = (data: {
-		status: string;
-		title: string;
-		description?: string;
-	}) => {
+
+	const handleUpdate = (data: TodoInput) => {
 		if (editingTask) {
 			updateTask({
-				id: String(editingTask.id),
+				id: editingTask.id,
 				data: {
 					title: data.title,
 					status: data.status,
@@ -48,6 +48,10 @@ export function TaskApp() {
 			)}
 			{isLoading ? (
 				<p>Chargement ...</p>
+			) : isError ? (
+				<p className="text-red-500">
+					Erreur de chargement des tâches : {error?.message}
+				</p>
 			) : (
 				<TaskList tasks={tasks} onEdit={handleEdit} deleteTask={deleteTask} />
 			)}

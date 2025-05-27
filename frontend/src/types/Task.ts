@@ -4,3 +4,7 @@ export default interface Task {
 	description?: string;
 	status: string;
 }
+
+export interface Data {
+	data: Task[];
+}

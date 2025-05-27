@@ -19,38 +19,39 @@ export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 					</tr>
 				</thead>
 				<tbody>
-					{tasks.map((task: Task) => (
-						<tr key={task.id} className="text-center">
-							<td className="px-4 py-2 border-b font-bold text-white">
-								{task.title}
-							</td>
-							<td className="px-4 py-2 border-b text-white">
-								{task.description}
-							</td>
-							<td className="px-4 py-2 border-b text-white">
-								<span className="bg-blue-500 text-white rounded-xl px-2 py-1">
-									{task.status}
-								</span>
-							</td>
-							<td className="px-4 py-2 border-b flex gap-2 justify-center">
-								<button
-									className="bg-orange-500 text-white px-3 py-1 rounded-xl hover:bg-orange-600"
-									onClick={() => onEdit(task)}
-								>
-									Éditer
-								</button>
-								<button
-									className="bg-red-500 text-white px-3 py-1 rounded-xl hover:bg-red-600"
-									onClick={() => {
-										deleteTask(task.id);
-									}}
-									text-white
-								>
-									Supprimer
-								</button>
-							</td>
-						</tr>
-					))}
+					{tasks.map((task: Task) => {
+						return (
+							<tr key={task.id} className="text-center">
+								<td className="px-4 py-2 border-b font-bold text-white">
+									{task.title}
+								</td>
+								<td className="px-4 py-2 border-b text-white">
+									{task.description}
+								</td>
+								<td className="px-4 py-2 border-b text-white">
+									<span className="bg-blue-500 text-white rounded-xl px-2 py-1">
+										{task.status}
+									</span>
+								</td>
+								<td className="px-4 py-2 border-b flex gap-2 justify-center">
+									<button
+										className="bg-orange-500 text-white px-3 py-1 rounded-xl hover:bg-orange-600"
+										onClick={() => onEdit(task)}
+									>
+										Éditer
+									</button>
+									<button
+										className="bg-red-500 text-white px-3 py-1 rounded-xl hover:bg-red-600"
+										onClick={() => {
+											deleteTask(task.id);
+										}}
+									>
+										Supprimer
+									</button>
+								</td>
+							</tr>
+						);
+					})}
 				</tbody>
 			</table>
 		</div>

@@ -11,13 +11,13 @@ export const taskService = {
 	deleteTask(id: string): boolean {
 		return taskStore.delete(id);
 	},
-	updateTask(id: string, task: Task) : Task {
+	updateTask(id: string, task: Task): Task {
 		return taskStore.update(id, task);
 	},
 	updateTaskStatus(id: string, status: string): TaskInput {
 		return taskStore.updateStatus(id, status);
 	},
-	resetTasks(): void{
+	resetTasks(): void {
 		return taskStore.reset();
 	},
 };

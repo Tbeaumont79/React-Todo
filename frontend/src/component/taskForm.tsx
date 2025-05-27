@@ -43,6 +43,7 @@ export const TodoForm = ({
 				placeholder="Titre"
 				className="placeholder-white w-full bg-base-200 rounded-2xl py-3 px-5 shadow-xs shadow-gray-950"
 			/>
+
 			<textarea
 				{...register("description")}
 				placeholder="Description"
