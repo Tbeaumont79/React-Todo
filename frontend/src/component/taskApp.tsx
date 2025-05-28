@@ -1,4 +1,4 @@
-import { TodoForm } from "./taskForm";
+import { TaskForm } from "./taskForm";
 import { TaskList } from "./taskList";
 import { useTasks } from "../hooks/useTasks";
 import Task from "../types/Task";
@@ -38,13 +38,13 @@ export function TaskApp() {
 		<div className="h-screen w-full flex flex-col bg-neutral justify-center items-center ">
 			<h1 className="text-3xl pt-5 text-white">Mes tâches</h1>
 			{editingTask ? (
-				<TodoForm
+				<TaskForm
 					onSubmit={handleUpdate}
 					defaultValues={editingTask}
 					buttonLabel="Mettre à jour"
 				/>
 			) : (
-				<TodoForm onSubmit={createTask} />
+				<TaskForm onSubmit={createTask} />
 			)}
 			{isLoading ? (
 				<p>Chargement ...</p>
