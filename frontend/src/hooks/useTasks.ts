@@ -11,6 +11,7 @@ import Task, { Data } from "../types/Task";
 export const useTasks = () => {
 	const queryClient = useQueryClient();
 	const queryKey = ["tasks"];
+	
 	const query = useQuery<Data, Error>({
 		queryKey,
 		queryFn: getAllTasks,
@@ -24,6 +25,7 @@ export const useTasks = () => {
 	const handleMutationError = (error: Error, action: string) => {
 		console.error(`Error during ${action}:`, error);
 	};
+
 	const handleMutationSuccess = (action: string) => {
 		console.log(`${action} successful`);
 	};

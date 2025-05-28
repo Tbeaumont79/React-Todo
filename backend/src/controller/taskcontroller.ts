@@ -11,6 +11,7 @@ export const getAllTasks = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error fetching tasks" });
 	}
 };
+
 export const createTask = async (req: Request, res: Response) => {
 	try {
 		const newTasks = {
@@ -28,6 +29,7 @@ export const createTask = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error adding task" });
 	}
 };
+
 export const updateTask = async (req: Request, res: Response) => {
 	try {
 		const existingTask = taskService
@@ -47,6 +49,7 @@ export const updateTask = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error updating task" });
 	}
 };
+
 export const updateTaskStatus = async (req: Request, res: Response) => {
 	try {
 		const parsed = statusSchema.safeParse(req.body);
@@ -62,6 +65,7 @@ export const updateTaskStatus = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error updating task status" });
 	}
 };
+
 export const deleteTask = async (req: Request, res: Response) => {
 	try {
 		const result = await taskService.deleteTask(req.params.id);
@@ -70,6 +74,7 @@ export const deleteTask = async (req: Request, res: Response) => {
 		res.status(500).json({ message: "Error deleting task" });
 	}
 };
+
 export const resetTasks = async (req: Request, res: Response) => {
 	try {
 		await taskService.resetTasks();

@@ -5,10 +5,12 @@ export const taskStore = {
 	getAll: (): Task[] => {
 		return tasks;
 	},
+
 	add: (task: Task): Task => {
 		tasks.push(task);
 		return task;
 	},
+
 	delete: (id: string): boolean => {
 		const index = tasks.findIndex((task) => task.id === id);
 		if (index === -1) {
@@ -17,6 +19,7 @@ export const taskStore = {
 		tasks.splice(index, 1);
 		return true;
 	},
+
 	update: (id: string, task: Task): Task => {
 		const index = tasks.findIndex((task) => task.id === id);
 		if (index === -1) {
@@ -25,6 +28,7 @@ export const taskStore = {
 		tasks[index] = task;
 		return task;
 	},
+
 	updateStatus: (id: string, status: string): Task => {
 		const task = tasks.find((task) => task.id === id);
 		if (!task) {
@@ -33,6 +37,7 @@ export const taskStore = {
 		task.status = status;
 		return task;
 	},
+
 	reset: (): void => {
 		tasks = [];
 	},
