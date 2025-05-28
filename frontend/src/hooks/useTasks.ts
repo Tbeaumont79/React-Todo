@@ -48,6 +48,7 @@ export const useTasks = () => {
 	const deleteMutation = useMutation<boolean, Error, string>({
 		mutationFn: deleteTask,
 		onSuccess: (deleteResult: boolean, deleteId: string) => {
+			
 			queryClient.setQueryData<Data>(queryKey, (prevTasks: Data) => {
 				if (prevTasks && Array.isArray(prevTasks.data)) {
 					return {

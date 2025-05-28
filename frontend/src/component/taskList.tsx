@@ -43,7 +43,13 @@ export function TaskList({ tasks, onEdit, deleteTask }: Props) {
 									<button
 										className="bg-red-500 text-white px-3 py-1 rounded-xl hover:bg-red-600"
 										onClick={() => {
-											deleteTask(task.id);
+											if (
+												window.confirm(
+													"Souhaitez-vous supprimer définitivement cette tâche ?"
+												)
+											) {
+												deleteTask(task.id);
+											}
 										}}
 									>
 										Supprimer
